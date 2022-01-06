@@ -1,23 +1,35 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("allcodes", {
-			id: {
+    await queryInterface.createTable("Users", {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-			key: {
+      firstName: {
+        type: Sequelize.STRING,
+      },      
+      lastName: {
         type: Sequelize.STRING,
       },
-			type: {
+      password: {
         type: Sequelize.STRING,
       },
-			valueEn: {
+      email: {
         type: Sequelize.STRING,
       },
-			valueVi: {
+      address: {
+        type: Sequelize.STRING,
+      },
+      gender: {
+        type: Sequelize.BOOLEAN,
+      },
+      typeRole: {
+        type: Sequelize.STRING,
+      },
+      keyRole: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -31,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("allcodes");
+    await queryInterface.dropTable("Users");
   },
 };
