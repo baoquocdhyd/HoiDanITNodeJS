@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get CRUD</title>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+	</style>
+	
+</head>
+<body>
+	<!-- <p><%=dataTable%></p> -->
+	<table style="width:100%" >
+		<tr>
+			<th>id</th>
+			<th>Lastname</th> 
+			<th>Firstname</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Số Điện Thoại</th>
+			<th>Sex</th>
+			<th>Role</th>
+			<th>Actions</th>
+		</tr>
+	
+		<% for(var i=0; i<dataTable.length; i++) {%>
+			<tr>
+				<td><%= dataTable[i].id%></td>
+				<td><%= dataTable[i].lastName%></td>
+				<td><%= dataTable[i].firstName%></td>
+				<td><%= dataTable[i].email%></td>
+				<td><%= dataTable[i].address%></td>
+				<td><%= dataTable[i].phonenumber%></td>
+				<td><%= dataTable[i].gender%></td>
+				<td><%= dataTable[i].roleId%></td>
+
+				
+
+
+				<td width = 100px>
+					<a href = '/edit-crud?id=<%=dataTable[i].id%>'>Edit</a> 
+					<a href = '/delete-crud?id=<%=dataTable[i].id%>'>Delete</a> 
+				</td>
+			</tr>
+		<% } %>
+	</table>
+	<a href="http://localhost:8081/crud">Thêm người dùng</a> <br/>
+</body>
+</html>
