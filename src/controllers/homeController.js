@@ -46,6 +46,8 @@ let deleteCRUD = async (req, res) => {
   return res.render("displayCRUD.ejs", { dataTable: newdata });
 };
 
+
+
 export {
   getHomePage,
   getHomePage2,
@@ -55,4 +57,5 @@ export {
   getEditCRUD,
   putCRUD,
   deleteCRUD,
+  
 };
