@@ -76,12 +76,12 @@ let createNewUser = (data) => {
     try {
       let a = await checkUserEmail(data.email);
       if (a) {
-        resolve({ errCode: 1, message: "Đã tồn tại email" });
+        resolve({ errCode: 1, errMessage: "Đã tồn tại email" });
       } else {
         let hashPasswordFromBcrypt = await hashUserPassword(data.password);
         await db.User.create({
-          firstName: data.firstname,
-          lastName: data.lastname,
+          firstName: data.firstName,
+          lastName: data.lastName,
           password: hashPasswordFromBcrypt,
           email: data.email,
           address: data.address,
@@ -89,7 +89,7 @@ let createNewUser = (data) => {
           gender: data.gender === "1" ? true : false,
           roleId: data.roleId,
         });
-        resolve({ errCode: 0, message: "OK" });
+        resolve({ errCode: 0, errMessage: "OK" });
       }
     } catch (e) {
       reject(e);
@@ -123,6 +123,7 @@ let deleteUser = (a) => {
 };
 
 let updateUserData = (data) => {
+  console.log("check nodeJs", data);
   return new Promise(async (resolve, reject) => {
     try {
       if (!data.id) {
@@ -130,8 +131,8 @@ let updateUserData = (data) => {
       }
       await db.User.update(
         {
-          firstName: data.firstname,
-          lastName: data.lastname,
+          firstName: data.firstName,
+          lastName: data.lastName,
           password: await bcrypt.hashSync(data.password, salt),
           email: data.email,
           address: data.address,

@@ -29,6 +29,7 @@ let initWebRoutes = (app) => {
   router.post("/put-crud", putCRUD);
   router.get("/delete-crud", deleteCRUD);
   router.post("/api/login", handleLogin);
+  
   router.get("/api/get-all-users", handleGetAllUsers); // tải về toàn bộ
   router.post("/api/create-new-user", handleCreateNewUser);
   router.put("/api/edit-user", handleEditUser);

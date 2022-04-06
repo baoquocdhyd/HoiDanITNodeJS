@@ -40,25 +40,31 @@ let handleGetAllUsers = async (req, res) => {
 };
 let handleCreateNewUser = async (req, res) => {
   let message = await createNewUser(req.body);
-  console.log(message);
+  // console.log(message);
   return res.status(200).json(message);
 };
 
 let handleEditUser = async (req, res) => {
-  let data = req.body
+  let data = req.body;
   let message = await updateUserData(data);
-  return res.status(200).json(message)
-  
-}
-
+  return res.status(200).json(message);
+};
 
 let handleDeleteUser = async (req, res) => {
-  if (!req.body.id) {return res.status(200).json({
-    errCode: 1,
-    errMessage: "Không có Id",
-  }) } 
+  if (!req.body.id) {
+    return res.status(200).json({
+      errCode: 1,
+      errMessage: "Không có Id",
+    });
+  }
   let message = await deleteUser(req.body.id);
   console.log(message);
-  return res.status(200).json(message)
-}
-export { handleLogin, handleGetAllUsers, handleCreateNewUser, handleEditUser, handleDeleteUser};
+  return res.status(200).json(message);
+};
+export {
+  handleLogin,
+  handleGetAllUsers,
+  handleCreateNewUser,
+  handleEditUser,
+  handleDeleteUser,
+};
